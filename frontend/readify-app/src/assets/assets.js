@@ -27,7 +27,7 @@ import book26 from "./book26.jpg";
 import book27 from "./book27.jpg";
 import book28 from "./book28.jpg";
 import book29 from "./book29.jpg";
-import book20 from "./book30.jpg";
+import book30 from "./book30.jpg";
 
 import logo from "./Logo-Readify.png";
 
