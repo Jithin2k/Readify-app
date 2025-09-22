@@ -13,7 +13,10 @@ const Navbar = () => {
   return (
     <div className="flex items-center justify-between">
       <div>
-        <img className="w-36 sm:w-40" src={assests.logo} alt="" />
+        <Link to="/">
+          {" "}
+          <img className="w-36 sm:w-40" src={assests.logo} alt="" />
+        </Link>
       </div>
 
       <ul className="hidden sm:flex items-center gap-5 font-medium ">
@@ -84,18 +87,38 @@ const Navbar = () => {
           <ul className="flex flex-col justify-center gap-y-8 text-center font-medium">
             <Link to="/">
               {" "}
-              <li  className="hover:bg-[#0A1F44] rounded-lg py-2 hover:text-white" onClick={() => setSidemenu(false)}>Home</li>{" "}
+              <li
+                className="hover:bg-[#0A1F44] rounded-lg py-2 hover:text-white"
+                onClick={() => setSidemenu(false)}
+              >
+                Home
+              </li>{" "}
             </Link>
             <Link to="/collections">
-              <li  className="hover:bg-[#0A1F44] rounded-lg py-2 hover:text-white" onClick={() => setSidemenu(false)}>Collection</li>{" "}
+              <li
+                className="hover:bg-[#0A1F44] rounded-lg py-2 hover:text-white"
+                onClick={() => setSidemenu(false)}
+              >
+                Collection
+              </li>{" "}
             </Link>
             <Link to="/about">
               {" "}
-              <li  className="hover:bg-[#0A1F44] rounded-lg py-2 hover:text-white" onClick={() => setSidemenu(false)}>About</li>{" "}
+              <li
+                className="hover:bg-[#0A1F44] rounded-lg py-2 hover:text-white"
+                onClick={() => setSidemenu(false)}
+              >
+                About
+              </li>{" "}
             </Link>
             <Link to="/contact">
               {" "}
-              <li className="hover:bg-[#0A1F44] rounded-lg py-2 hover:text-white" onClick={() => setSidemenu(false)}>Contact</li>{" "}
+              <li
+                className="hover:bg-[#0A1F44] rounded-lg py-2 hover:text-white"
+                onClick={() => setSidemenu(false)}
+              >
+                Contact
+              </li>{" "}
             </Link>
           </ul>
         </div>
