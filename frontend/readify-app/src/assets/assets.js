@@ -30,9 +30,11 @@ import book29 from "./book29.jpg";
 import book30 from "./book30.jpg";
 
 import logo from "./Logo-Readify.png";
+import hero from "./hero.jpg"
 
 export const assests = {
-  logo
+  logo,
+  hero
 }
 
 export const books = [

@@ -22,25 +22,25 @@ const Navbar = () => {
       <ul className="hidden sm:flex items-center gap-5 font-medium ">
         <NavLink
           to="/"
-          className="text-[#333333] hover:text-[#0A1F44] hover:scale-105  cursor-pointer"
+          className="text-[#333333] hover:text-[#36d1b4] hover:scale-105  cursor-pointer"
         >
           Home
         </NavLink>
         <NavLink
           to="/collection"
-          className="text-[#333333] hover:text-[#0A1F44] hover:scale-105  cursor-pointer"
+          className="text-[#333333] hover:text-[#36d1b4] hover:scale-105  cursor-pointer"
         >
           Collection
         </NavLink>
         <NavLink
           to="/about"
-          className="text-[#333333] hover:text-[#0A1F44] hover:scale-105  cursor-pointer"
+          className="text-[#333333] hover:text-[#36d1b4] hover:scale-105  cursor-pointer"
         >
           About
         </NavLink>
         <NavLink
           to="/contact"
-          className="text-[#333333] hover:text-[#0A1F44] hover:scale-105 cursor-pointer"
+          className="text-[#333333] hover:text-[#36d1b4] hover:scale-105 cursor-pointer"
         >
           Contact
         </NavLink>
@@ -54,8 +54,8 @@ const Navbar = () => {
           <CgProfile size={30} />
           <div className="group-hover:block hidden absolute right-0 dropdown-menu py-4">
             <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-[#333333] font-medium rounded">
-              <p className="cursor-pointer hover:text-[#1B5E20]">My Profile</p>
-              <p className="cursor-pointer hover:text-[#1B5E20]">Orders</p>
+              <p className="cursor-pointer hover:text-[#36d1b4]">My Profile</p>
+              <p className="cursor-pointer hover:text-[#36d1b4]">Orders</p>
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@ const Navbar = () => {
             <Link to="/">
               {" "}
               <li
-                className="hover:bg-[#0A1F44] rounded-lg py-2 hover:text-white"
+                className="hover:bg-[#36d1b4] rounded-lg py-2 hover:text-white"
                 onClick={() => setSidemenu(false)}
               >
                 Home
@@ -96,7 +96,7 @@ const Navbar = () => {
             </Link>
             <Link to="/collections">
               <li
-                className="hover:bg-[#0A1F44] rounded-lg py-2 hover:text-white"
+                className="hover:bg-[#36d1b4] rounded-lg py-2 hover:text-white"
                 onClick={() => setSidemenu(false)}
               >
                 Collection
@@ -105,7 +105,7 @@ const Navbar = () => {
             <Link to="/about">
               {" "}
               <li
-                className="hover:bg-[#0A1F44] rounded-lg py-2 hover:text-white"
+                className="hover:bg-[#36d1b4] rounded-lg py-2 hover:text-white"
                 onClick={() => setSidemenu(false)}
               >
                 About
@@ -114,7 +114,7 @@ const Navbar = () => {
             <Link to="/contact">
               {" "}
               <li
-                className="hover:bg-[#0A1F44] rounded-lg py-2 hover:text-white"
+                className="hover:bg-[#36d1b4] rounded-lg py-2 hover:text-white"
                 onClick={() => setSidemenu(false)}
               >
                 Contact
