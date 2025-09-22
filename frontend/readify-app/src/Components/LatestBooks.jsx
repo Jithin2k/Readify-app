@@ -16,7 +16,7 @@ const LatestBooks = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 gap-y-6">
         {latestBooks.map((book, index) => (
-          <BookCard image={book.image} name={book.name} price={book.price} />
+          <BookCard key={book._id} image={book.image} name={book.name} price={book.price} />
         ))}
       </div>
     </div>

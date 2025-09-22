@@ -2,7 +2,7 @@ import React from 'react'
 
 const BookCard = ({image,name,price}) => {
   return (
-    <div className=' flex flex-col items-center max-w-56 p-3 hover:scale-105 transition-all duration-300 cursor-pointer rounded-lg'>
+    <div className=' flex flex-col items-center max-w-56 p-3 hover:scale-105 transition-all duration-300 cursor-pointer rounded-lg shadow-lg shadow-gray-400'>
       <div>
         <img className='w-full h-72 object-cover' src={image} alt="" />
       </div>
