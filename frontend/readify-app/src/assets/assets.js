@@ -58,7 +58,7 @@ export const books = [
     price: 20.5,
     category: "Productivity",
     bestseller: true,
-    image:book2
+    image:book3
   },
   {
     id: 3,
@@ -69,7 +69,7 @@ export const books = [
     price: 16.75,
     category: "Productivity",
     bestseller: false,
-    image:book3
+    image:book4
   },
   {
     id: 4,
@@ -80,7 +80,7 @@ export const books = [
     price: 17.25,
     category: "Productivity",
     bestseller: false,
-    image:book4
+    image:book5
   },
   {
     id: 5,
