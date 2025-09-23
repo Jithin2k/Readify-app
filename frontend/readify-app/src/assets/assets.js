@@ -367,6 +367,6 @@ export const books = [
     price: 14.99,
     category: "Productivity",
     bestseller: false,
-    image:book5
+    image:book2
   },
 ];
