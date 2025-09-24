@@ -37,7 +37,9 @@ const Product = () => {
             <h4 className="text-xl sm:text-2xl md:text-3xl text-green-600 font-medium py-2">${currentBook.price}</h4>
           </div>
           <p className="text-xs sm:text-sm font-medium text-green-950 w-full sm:w-3/4">{currentBook.description}</p>
+            <button className="px-4 py-2 text-white bg-[#003c36] text-sm sm:text-xl rounded-3xl my-4">ADD TO CART</button>
         </div>
+      
       </div> : (
       <p className="text-center text-gray-500">Loading book details...</p>
     )

@@ -51,7 +51,7 @@ export const books = [
   },
   {
     id: 2,
-    name: "The 7 Habits of Highly Effective People",
+    name: "7 Habits of Highly Effective People",
     author: "Stephen R. Covey",
     description:
       "This classic self-help book presents seven timeless principles for achieving effectiveness in personal and professional life. Stephen Covey emphasizes proactive living, prioritizing what matters most, and aligning actions with deeply held values. With real-life examples and actionable strategies, the book has helped millions lead more balanced, meaningful, and successful lives.",

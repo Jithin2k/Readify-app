@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import Title from './Title'
 import BookCard from './BookCard'
+import { Link } from 'react-router-dom'
 
 const BestSeller = () => {
     const books = useSelector((store)  => store.bookData.allBooks)
@@ -16,7 +17,8 @@ const BestSeller = () => {
       <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 gap-y-6'>
         {
             bestSeller.map((book,index) =>(
-                <BookCard key={book._id} name={book.name} image={book.image} price={book.price}/>
+              <Link to ={`/book/${book.id}`}>
+                <BookCard key={book.id} name={book.name} image={book.image} price={book.price}/></Link>
             ))
         }
       </div>
