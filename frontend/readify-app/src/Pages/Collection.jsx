@@ -5,10 +5,13 @@ import { useSelector } from 'react-redux'
 import BookCard from "../Components/BookCard"
 import useBookFilter from "../Hooks/useBookFilter.js";
 import useSort from "../Hooks/useSort.js"
+import SearchBar from "../Components/searchBar.jsx";
 
 const Collection = () => {
 
   const allBooks = useSelector((store) => store.bookData.allBooks);
+  const showSearchBar = useSelector((store) => store.search.showSearchBar);
+  const searchTerm = useSelector((store) => store.search.searchTerm);
 
   const [showFilter,setShowFilter] = useState(false);
 
@@ -16,8 +19,13 @@ const Collection = () => {
 
   const {setSortBy,sortedList} = useSort(filteredBooks);
 
+  const searchResults = sortedList.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
 
   return (
+<>{showSearchBar && <SearchBar/>}
       <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
       {/* Left Section */}
       <div className="min-w-60">
@@ -73,13 +81,14 @@ const Collection = () => {
         {/* All Books */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 gap-y-6">
           {
-            sortedList.map((book)=>(
+            searchResults.map((book)=>(
               <BookCard key={book._id} image={book.image} name={book.name} price={book.price}/>
             ))
           }
         </div>
       </div>
     </div>
+    </>
   );
 };
 

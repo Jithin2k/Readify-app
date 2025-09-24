@@ -5,10 +5,22 @@ import { CgProfile } from "react-icons/cg";
 import { FaCartShopping } from "react-icons/fa6";
 import { IoMdMenu } from "react-icons/io";
 import { FaArrowLeft } from "react-icons/fa6";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { setShowSearchBar } from "../Store/searchSlice.js";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
   const [sideMenu, setSidemenu] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  
+  const openSearchBar = () => {
+    if (location.pathname !== "/collections") {
+      navigate("/collection");
+    }
+    dispatch(setShowSearchBar(true));
+  };
 
   return (
     <div className="flex items-center justify-between">
@@ -46,8 +58,8 @@ const Navbar = () => {
         </NavLink>
       </ul>
 
-      <div className="flex items-center gap-5">
-        <p>
+      <div className="flex items-center gap-5 cursor-pointer">
+        <p onClick={openSearchBar}>
           <IoSearch size={30} />
         </p>
         <div className="group relative">
