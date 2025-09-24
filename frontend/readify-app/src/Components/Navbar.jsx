@@ -71,9 +71,9 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <p>
+        <Link to="/cart"><p>
           <FaCartShopping size={30} />
-        </p>
+        </p> </Link>
         <div onClick={() => setSidemenu(true)} className="sm:hidden">
           <p>
             <IoMdMenu size={30} />

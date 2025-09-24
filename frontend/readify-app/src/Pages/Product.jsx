@@ -14,7 +14,6 @@ const Product = () => {
 
   const fetchBook = () => {
     let matchedBook = allBooks.find((book) => book.id == bookId);
-    console.log(matchedBook);
     if (matchedBook) {
       setCurrentBook(matchedBook);
     }
