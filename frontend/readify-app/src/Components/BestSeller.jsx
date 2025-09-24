@@ -7,9 +7,6 @@ const BestSeller = () => {
     const books = useSelector((store)  => store.bookData.allBooks)
     const bestSeller = books.filter((book) => book.bestseller === true).slice(0,10)
 
-     useEffect(() => {
-    console.log(bestSeller);
-  }, []);
   return (
     <div className='my-10'>
       <div className='text-center py-6 text-3xl'>

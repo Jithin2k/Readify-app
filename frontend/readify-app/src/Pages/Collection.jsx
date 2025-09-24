@@ -6,6 +6,7 @@ import BookCard from "../Components/BookCard"
 import useBookFilter from "../Hooks/useBookFilter.js";
 import useSort from "../Hooks/useSort.js"
 import SearchBar from "../Components/searchBar.jsx";
+import { Link } from "react-router-dom";
 
 const Collection = () => {
 
@@ -82,9 +83,12 @@ const Collection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 gap-y-6">
           {
             searchResults.map((book)=>(
+              <Link to ={`/book/${book.id}`}>
               <BookCard key={book._id} image={book.image} name={book.name} price={book.price}/>
-            ))
-          }
+            
+              </Link>
+              
+          ))}
         </div>
       </div>
     </div>
