@@ -63,7 +63,7 @@ const Navbar = () => {
           <IoSearch size={30} />
         </p>
         <div className="group relative">
-          <CgProfile size={30} />
+        <Link to="/login"> <p> <CgProfile size={30} /></p></Link>
           <div className="group-hover:block hidden absolute right-0 dropdown-menu py-4">
             <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-[#333333] font-medium rounded">
               <p className="cursor-pointer hover:text-[#36d1b4]">My Profile</p>
