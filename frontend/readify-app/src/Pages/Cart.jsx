@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import Title from "../Components/Title";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaRegSadCry } from "react-icons/fa";
+import CartTotal from "../Components/CartTotal";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.cartItems);
@@ -59,17 +60,35 @@ const Cart = () => {
                 min={1}
                 defaultValue={item.quantity}
               />
-              <p className="cursor-pointer" onClick={() => handleRemoveItem(item.id)}>
+              <p
+                className="cursor-pointer"
+                onClick={() => handleRemoveItem(item.id)}
+              >
                 <MdDeleteOutline size={30} />
               </p>
             </div>
           ))
         ) : (
           <div className="flex items-center justify-center gap-5">
-            <h2 className="text-center sm:text-2xl text-5xl text-green-900">Cart Is Empty!!!</h2>
-            <p><FaRegSadCry size={60}/></p>
+            <h2 className="text-center sm:text-2xl text-5xl text-green-900">
+              Cart Is Empty!!!
+            </h2>
+            <p>
+              <FaRegSadCry size={60} />
+            </p>
           </div>
         )}
+      </div>
+
+      <div className="flex flex-col my-20">
+        <div className="w-full sm:w-[450px]">
+          <CartTotal />
+        </div>
+        <div className="w-full text-start">
+          <button onClick={handleProceedToPay} className="bg-green-800 text-white text-sm my-8 px-8 py-3 cursor-pointer">
+            PROCEED TO PAY
+          </button>
+        </div>
       </div>
     </div>
   );
