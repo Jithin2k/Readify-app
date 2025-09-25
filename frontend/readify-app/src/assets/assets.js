@@ -30,16 +30,20 @@ import book29 from "./book29.jpg";
 import book30 from "./book30.jpg";
 
 import logo from "./Logo-Readify.png";
-import hero from "./hero.jpg"
-import stripe_logo from "./stripe_logo.png"
-import razorpay_logo from "./razorpay_logo.png"
+import hero from "./hero.jpg";
+import stripe_logo from "./stripe_logo.png";
+import razorpay_logo from "./razorpay_logo.png";
+import about_img from "./about.jpg";
+import contact_img from "./contact.jpg";
 
 export const assests = {
   logo,
   hero,
   stripe_logo,
-  razorpay_logo
-}
+  razorpay_logo,
+  about_img,
+  contact_img,
+};
 
 export const books = [
   {
@@ -51,7 +55,7 @@ export const books = [
     price: 18,
     category: "Productivity",
     bestseller: true,
-    image:book1
+    image: book1,
   },
   {
     id: 2,
@@ -62,7 +66,7 @@ export const books = [
     price: 20,
     category: "Productivity",
     bestseller: true,
-    image:book3
+    image: book3,
   },
   {
     id: 3,
@@ -73,7 +77,7 @@ export const books = [
     price: 16,
     category: "Productivity",
     bestseller: false,
-    image:book4
+    image: book4,
   },
   {
     id: 4,
@@ -84,7 +88,7 @@ export const books = [
     price: 17,
     category: "Productivity",
     bestseller: false,
-    image:book5
+    image: book5,
   },
   {
     id: 5,
@@ -95,7 +99,7 @@ export const books = [
     price: 22,
     category: "Self-Help",
     bestseller: true,
-    image:book6
+    image: book6,
   },
   {
     id: 6,
@@ -106,7 +110,7 @@ export const books = [
     price: 15,
     category: "Self-Help",
     bestseller: true,
-    image:book7
+    image: book7,
   },
   {
     id: 7,
@@ -117,7 +121,7 @@ export const books = [
     price: 19,
     category: "Self-Help",
     bestseller: true,
-    image:book8
+    image: book8,
   },
   {
     id: 8,
@@ -128,7 +132,7 @@ export const books = [
     price: 14,
     category: "Self-Help",
     bestseller: false,
-    image:book9
+    image: book9,
   },
   {
     id: 9,
@@ -139,7 +143,7 @@ export const books = [
     price: 18,
     category: "Self-Help",
     bestseller: true,
-    image:book10
+    image: book10,
   },
   {
     id: 10,
@@ -150,7 +154,7 @@ export const books = [
     price: 21,
     category: "Finance",
     bestseller: true,
-    image:book11
+    image: book11,
   },
   {
     id: 11,
@@ -161,7 +165,7 @@ export const books = [
     price: 17,
     category: "Finance",
     bestseller: true,
-    image:book12
+    image: book12,
   },
   {
     id: 12,
@@ -172,7 +176,7 @@ export const books = [
     price: 16,
     category: "Finance",
     bestseller: false,
-    image:book13
+    image: book13,
   },
   {
     id: 13,
@@ -183,7 +187,7 @@ export const books = [
     price: 24,
     category: "Finance",
     bestseller: true,
-    image:book14
+    image: book14,
   },
   {
     id: 14,
@@ -194,7 +198,7 @@ export const books = [
     price: 15,
     category: "Finance",
     bestseller: false,
-    image:book15
+    image: book15,
   },
   {
     id: 15,
@@ -205,7 +209,7 @@ export const books = [
     price: 14,
     category: "Fiction",
     bestseller: true,
-    image:book16
+    image: book16,
   },
   {
     id: 16,
@@ -216,7 +220,7 @@ export const books = [
     price: 13,
     category: "Fiction",
     bestseller: true,
-    image:book17
+    image: book17,
   },
   {
     id: 17,
@@ -227,7 +231,7 @@ export const books = [
     price: 12,
     category: "Fiction",
     bestseller: true,
-    image:book18
+    image: book18,
   },
   {
     id: 18,
@@ -238,7 +242,7 @@ export const books = [
     price: 18,
     category: "Fiction",
     bestseller: true,
-    image:book19
+    image: book19,
   },
   {
     id: 19,
@@ -249,7 +253,7 @@ export const books = [
     price: 11,
     category: "Fiction",
     bestseller: true,
-    image:book20
+    image: book20,
   },
   {
     id: 20,
@@ -260,7 +264,7 @@ export const books = [
     price: 13,
     category: "Romance",
     bestseller: true,
-    image:book21
+    image: book21,
   },
   {
     id: 21,
@@ -271,7 +275,7 @@ export const books = [
     price: 14,
     category: "Romance",
     bestseller: true,
-    image:book22
+    image: book22,
   },
   {
     id: 22,
@@ -282,7 +286,7 @@ export const books = [
     price: 15,
     category: "Romance",
     bestseller: true,
-    image:book23
+    image: book23,
   },
   {
     id: 23,
@@ -293,7 +297,7 @@ export const books = [
     price: 12,
     category: "Romance",
     bestseller: false,
-    image:book24
+    image: book24,
   },
   {
     id: 24,
@@ -304,7 +308,7 @@ export const books = [
     price: 16,
     category: "Romance",
     bestseller: true,
-    image:book25
+    image: book25,
   },
   {
     id: 25,
@@ -315,7 +319,7 @@ export const books = [
     price: 22,
     category: "Fantasy",
     bestseller: true,
-    image:book26
+    image: book26,
   },
   {
     id: 26,
@@ -326,7 +330,7 @@ export const books = [
     price: 10,
     category: "Fantasy",
     bestseller: true,
-    image:book27
+    image: book27,
   },
   {
     id: 27,
@@ -337,7 +341,7 @@ export const books = [
     price: 11,
     category: "Fantasy",
     bestseller: true,
-    image:book28
+    image: book28,
   },
   {
     id: 28,
@@ -348,7 +352,7 @@ export const books = [
     price: 18,
     category: "Fantasy",
     bestseller: true,
-    image:book29
+    image: book29,
   },
   {
     id: 29,
@@ -359,7 +363,7 @@ export const books = [
     price: 9,
     category: "Fantasy",
     bestseller: true,
-    image:book30
+    image: book30,
   },
 
   {
@@ -371,6 +375,6 @@ export const books = [
     price: 14,
     category: "Productivity",
     bestseller: false,
-    image:book2
+    image: book2,
   },
 ];
