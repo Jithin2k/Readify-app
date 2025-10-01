@@ -74,6 +74,20 @@ const removeProduct = async (req, res) => {
 
 //  SINGLE PRODUCT
 
-const singleProduct = async (req, res) => {};
+const singleProduct = async (req, res) => {
+  try {
+    const {productId} = req.body;
+
+    const product = await productModel.findById(productId);
+
+    res.status(200).json({success:true,product})
+  } catch (error) {
+      return res.status(500).json({
+      success: false,
+      message: "Something went wrong. Please try again later.",
+      error: error.message,
+    });
+  }
+};
 
 export { addProduct, listProduct, removeProduct, singleProduct };
