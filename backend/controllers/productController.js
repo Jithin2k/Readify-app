@@ -59,7 +59,18 @@ const listProduct = async (req, res) => {
 
 // REMOVE PROCUCT
 
-const removeProduct = async (req, res) => {};
+const removeProduct = async (req, res) => {
+  try {
+    await productModel.findByIdAndDelete(req.body.id);
+    res.status(200).json({success:true,message:"Product Removed"})
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong. Please try again later.",
+      error: error.message,
+    });
+  }
+};
 
 //  SINGLE PRODUCT
 
