@@ -24,16 +24,15 @@ const addProduct = async (req, res) => {
       price: Number(price),
       bestseller: bestseller === "true" ? true : false,
       image: imageUrl,
-      date : Date.now()
+      date: Date.now(),
     };
 
-  console.log(productData);
+    const product = new productModel(productData);
+    await product.save();
 
-  const product = new productModel(productData);
-  await product.save();
-
-  res.status(200).json({success:true,message: "Product Added Successfully"})
-  
+    res
+      .status(200)
+      .json({ success: true, message: "Product Added Successfully" });
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -45,7 +44,18 @@ const addProduct = async (req, res) => {
 
 // LIST PRODUCT
 
-const listProduct = async (req, res) => {};
+const listProduct = async (req, res) => {
+  try {
+    const products = await productModel.find({});
+    res.status(200).json({ success: true, products });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Something went wrong. Please try again later.",
+      error: error.message,
+    });
+  }
+};
 
 // REMOVE PROCUCT
 
