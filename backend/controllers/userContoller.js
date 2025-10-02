@@ -91,7 +91,7 @@ const adminLogin = async (req, res) => {
       password === process.env.ADMIN_PASSWORD
     ) {
       const token = jwt.sign(email + password, process.env.JWT_SECRET_KEY);
-      res.status(200).json({ successs: true, token });
+      res.status(200).json({ success: true, token });
     } else {
       res.status(409).json({ success: false, message: "Invalid Credentials" });
     }
