@@ -4,7 +4,7 @@ import productModel from "../models/productModel.js";
 
 const addProduct = async (req, res) => {
   try {
-    const { name, description, price, category, bestseller } = req.body;
+    const { name, description, price, category, bestseller,author } = req.body;
 
     const image = req.file ? req.file : null;
 
@@ -19,6 +19,7 @@ const addProduct = async (req, res) => {
 
     const productData = {
       name,
+      author,
       description,
       category,
       price: Number(price),
