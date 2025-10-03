@@ -32,7 +32,7 @@ const Add = ({token}) => {
         setName("")
         setAuthor("");
         setDescription("");
-        setCategory("");
+        setCategory("Productivity");
         setPrice("");
         setImage(false);
       } else{
