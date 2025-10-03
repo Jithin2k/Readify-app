@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { assets } from "../assets/assets";
 import axios from "axios";
 import { backendUrl } from "../App";
+import { toast } from "react-toastify";
 
 const Add = ({token}) => {
   const [image, setImage] = useState(false);
@@ -25,9 +26,22 @@ const Add = ({token}) => {
       image && formData.append("image",image); 
 
       const response = await axios.post(backendUrl + "/api/product/add",formData,{headers:{token}});
-      console.log(response);
+      
+      if(response.data.success){
+        toast.success(response.data.message);
+        setName("")
+        setAuthor("");
+        setDescription("");
+        setCategory("");
+        setPrice("");
+        setImage(false);
+      } else{
+        toast.error(response.data.message)
+      }
 
      } catch (error) {
+      console.log(error);
+      toast.error(error.message)
       
      }
   }
