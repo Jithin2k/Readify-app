@@ -17,7 +17,7 @@ const BestSeller = () => {
       <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 gap-y-6'>
         {
             bestSeller.map((book,index) =>(
-              <Link to ={`/book/${book.id}`}>
+              <Link to ={`/book/${book._id}`}>
                 <BookCard key={book.id} name={book.name} image={book.image} price={book.price}/></Link>
             ))
         }

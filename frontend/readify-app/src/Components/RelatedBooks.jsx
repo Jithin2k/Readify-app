@@ -13,7 +13,7 @@ const RelatedBooks = ({ category }) => {
     if (allBooks.length > 0) {
       let booksCopy = allBooks.slice();
 
-      booksCopy = booksCopy.filter((book) => book.category === category && book.id !== Number(bookId));
+      booksCopy = booksCopy.filter((book) => book.category === category && book._id !== bookId);
       setRelated(booksCopy.slice(0, 5));
     }
   }, [allBooks, category,bookId]);
@@ -25,7 +25,7 @@ const RelatedBooks = ({ category }) => {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
         {related.map((book) => (
-          <Link to={`/book/${book.id}`}>
+          <Link to={`/book/${book._id}`}>
           <BookCard
             key={book.id}
             image={book.image}

@@ -83,7 +83,7 @@ const Collection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 gap-y-6">
           {
             searchResults.map((book)=>(
-              <Link to ={`/book/${book.id}`}>
+              <Link to ={`/book/${book._id}`}>
               <BookCard key={book._id} image={book.image} name={book.name} price={book.price}/>
             
               </Link>

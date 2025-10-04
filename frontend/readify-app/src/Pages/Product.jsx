@@ -13,11 +13,13 @@ const Product = () => {
   const [currentBook, setCurrentBook] = useState(null);
 
   const fetchBook = () => {
-    let matchedBook = allBooks.find((book) => book.id == bookId);
+    let matchedBook = allBooks.find((book) => book._id === bookId);
     if (matchedBook) {
       setCurrentBook(matchedBook);
     }
   };
+
+  console.log(currentBook)
 
   const handleAddToCart = () => {
     const cartItem = {

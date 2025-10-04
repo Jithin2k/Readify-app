@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import Collection from "./Pages/Collection";
@@ -11,12 +11,34 @@ import Login from "./Pages/Login";
 import PlaceOrder from "./Pages/PlaceOrder";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
-
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { backendUrl } from "./Store/urlSlice";
+import { setBooks } from "./Store/bookSlice";
 
 const App = () => {
+  const [bookData, setBookData] = useState([]);
+  const dispatch = useDispatch();
+  // const token = "eyJhbGciOiJIUzI1NiJ9.YWRtaW5AcmVhZGlmeS5jb21yZWFkaWZ5QDJr.0C666gcG5k9pXHrHwkZ8eDgoVIfMItjw5UemCC_3q5s"
+
+  const getBooksData = async () => {
+    try {
+      const response = await axios.get(backendUrl + "/api/product/list");
+      console.log(backendUrl)
+      console.log(response)
+      dispatch(setBooks(response.data.products))
+    } catch (error) {
+      console.log(error.message)
+    }
+  };
+
+  useEffect(()=>{
+    getBooksData()
+  },[])
+
   return (
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] ">
-      <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/collection" element={<Collection />} />
@@ -28,8 +50,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/placeorder" element={<PlaceOrder />} />
       </Routes>
-      
-      <Footer/>
+
+      <Footer />
     </div>
   );
 };
