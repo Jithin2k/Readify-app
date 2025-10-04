@@ -19,7 +19,7 @@ const loginUser = async (req, res) => {
 
     if (isMatch) {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY);
-      res.status(200).json({ success: true, token });
+      res.status(200).json({ success: true, token , userId  : user._id  });
     } else {
       return res
         .status(401)

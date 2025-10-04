@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import RelatedBooks from "../Components/RelatedBooks";
 import { addToCart } from "../Store/cartSlice";
 import { toast } from "react-toastify";
+import axios from "axios";
+import { backendUrl } from "../Store/urlSlice";
 
 const Product = () => {
   const allBooks = useSelector((store) => store.bookData.allBooks);
@@ -19,18 +21,36 @@ const Product = () => {
     }
   };
 
-  console.log(currentBook)
+  const handleAddToCart = async () => {
+    const userId = localStorage.getItem("userId");
+    const token = localStorage.getItem("token")
 
-  const handleAddToCart = () => {
-    const cartItem = {
-      id: currentBook.id,
-      name: currentBook.name,
-      price: currentBook.price,
-      image: currentBook.image,
-    };
-    dispatch(addToCart(cartItem));
+    if (!userId) {
+      toast.error("Please Login First");
+    }
+    try {
+      const response = await axios.post(backendUrl + "/api/cart/add", {
+        userId,
+        itemId: currentBook._id,
+      },{headers :{ token : token}});
 
-    toast.success("Book Added To Cart");
+      if (response.data.success) {
+        dispatch(
+          addToCart({
+            id: currentBook._id,
+            name: currentBook.name,
+            price: currentBook.price,
+            image: currentBook.image,
+          })
+        );
+          toast.success("Book Added To Cart");
+      } else {
+              toast.error(response.data.message || "Failed to add to cart");
+      }
+    } catch (error) {
+        console.error(error);
+    toast.error("Something went wrong while adding to cart");
+    }
   };
 
   useEffect(() => {

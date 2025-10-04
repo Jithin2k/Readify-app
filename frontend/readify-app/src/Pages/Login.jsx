@@ -27,6 +27,7 @@ const Login = () => {
         });
         if (response.data.success) {
           dispatch(setToken(response.data.token));
+          localStorage.setItem("userId", response.data.userId);
           localStorage.setItem("token", response.data.token);
         } else {
           toast.error(response.data.message || "Invalid Credentials");
@@ -38,6 +39,7 @@ const Login = () => {
         });
         if (response.data.success) {
           dispatch(setToken(response.data.token));
+          localStorage.setItem("userId", response.data.userId);
           localStorage.setItem("token", response.data.token);
         } else {
           toast.error(response.data.message || "Invalid Credentials");
@@ -55,7 +57,6 @@ const Login = () => {
     }
   }, [userToken, navigate]);
 
- 
   return (
     <form
       onSubmit={onSubmitHandler}
