@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Title from "./Title";
 import { useSelector } from "react-redux";
 import BookCard from "./BookCard";
+import { Link } from "react-router-dom";
+
 
 const LatestBooks = () => {
   const books = useSelector((store) => store.bookData.allBooks);

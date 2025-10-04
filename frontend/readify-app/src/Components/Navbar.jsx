@@ -7,14 +7,26 @@ import { IoMdMenu } from "react-icons/io";
 import { FaArrowLeft } from "react-icons/fa6";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { setShowSearchBar } from "../Store/searchSlice.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setToken } from "../Store/urlSlice.js";
+import { clearCart } from "../Store/cartSlice.js";
 
 const Navbar = () => {
   const [sideMenu, setSidemenu] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-  
+
+  const token = useSelector((store) => store.userToken.token);
+
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    dispatch(setToken(""));
+    dispatch(clearCart())
+    navigate("/login");
+  };
+
   const openSearchBar = () => {
     if (location.pathname !== "/collections") {
       navigate("/collection");
@@ -62,18 +74,34 @@ const Navbar = () => {
         <p onClick={openSearchBar}>
           <IoSearch size={30} />
         </p>
-        <div className="group relative">
-        <Link to="/login"> <p> <CgProfile size={30} /></p></Link>
-          <div className="group-hover:block hidden absolute right-0 dropdown-menu py-4">
-            <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-[#333333] font-medium rounded">
-              <p className="cursor-pointer hover:text-[#36d1b4]">My Profile</p>
-              <p className="cursor-pointer hover:text-[#36d1b4]">Orders</p>
-            </div>
-          </div>
+       <div className="group relative">
+  {token ? (
+    <>
+      <p>
+        <CgProfile size={30} className="cursor-pointer" />
+      </p>
+      <div className="group-hover:block hidden absolute right-0 dropdown-menu py-4">
+        <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-[#333333] font-medium rounded">
+          <p className="cursor-pointer hover:text-[#36d1b4]">My Profile</p>
+          <Link to="/orders">
+            <p className="cursor-pointer hover:text-[#36d1b4]">Orders</p>
+          </Link>
+          <p onClick={logout} className="cursor-pointer hover:text-[#36d1b4]">Logout</p>
         </div>
-        <Link to="/cart"><p>
-          <FaCartShopping size={30} />
-        </p> </Link>
+      </div>
+    </>
+  ) : (
+    <Link to="/login">
+      <CgProfile size={30} className="cursor-pointer" />
+    </Link>
+  )}
+</div>
+
+        <Link to="/cart">
+          <p>
+            <FaCartShopping size={30} />
+          </p>{" "}
+        </Link>
         <div onClick={() => setSidemenu(true)} className="sm:hidden">
           <p>
             <IoMdMenu size={30} />

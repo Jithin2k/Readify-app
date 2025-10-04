@@ -24,8 +24,7 @@ const App = () => {
   const getBooksData = async () => {
     try {
       const response = await axios.get(backendUrl + "/api/product/list");
-      console.log(backendUrl)
-      console.log(response)
+  
       dispatch(setBooks(response.data.products))
     } catch (error) {
       console.log(error.message)
