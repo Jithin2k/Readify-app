@@ -24,7 +24,6 @@ const addToCart = async (req, res) => {
   }
 };
 
-console.log(cartItems);
 
 const updateCart = async (req, res) => {
   try {
