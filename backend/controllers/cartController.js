@@ -24,6 +24,8 @@ const addToCart = async (req, res) => {
   }
 };
 
+console.log(cartItems);
+
 const updateCart = async (req, res) => {
   try {
     const { userId, itemId, quantity } = req.body;
@@ -33,11 +35,35 @@ const updateCart = async (req, res) => {
 
     cartData[itemId] = quantity;
 
-    await userModel.findByIdAndUpdate(userId, { cartData },{new:true});
-    res.status(200).json({ success: true, message: "Quantity Updated",cartData:cartData });
+    await userModel.findByIdAndUpdate(userId, { cartData }, { new: true });
+    res
+      .status(200)
+      .json({ success: true, message: "Quantity Updated", cartData: cartData });
   } catch (error) {
     res.status(400).json({ success: false, message: error.message });
   }
+};
+
+const removeFromCart = async (req, res) => {
+ try {
+   const userId = req.userId;
+  const { itemId } = req.body;
+
+  const user = await userModel.findById(userId);
+
+  if (!user) {
+    return res.status(404).json({ success: false, message: "User not found" });
+  }
+
+  delete user.cartData[itemId];
+   user.markModified("cartData");
+  await user.save();
+
+  res.status(200).json({ success: true, message: "Item removed from cart" });
+ } catch (error) {
+   res.status(400).json({ success: false, message: error.message });
+ }
+
 };
 
 const getUserCart = async (req, res) => {
@@ -45,13 +71,15 @@ const getUserCart = async (req, res) => {
     const userId = req.userId;
 
     const userData = await userModel.findById(userId);
-      if (!userData) {
-      return res.status(404).json({ success: false, message: "User not found" });
+    if (!userData) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
     }
 
     let cartData = userData.cartData || {};
 
-      const cartItems = await Promise.all(
+    const cartItems = await Promise.all(
       Object.entries(cartData).map(async ([bookId, quantity]) => {
         const book = await productModel.findById(bookId);
         if (!book) return null;
@@ -66,12 +94,13 @@ const getUserCart = async (req, res) => {
       })
     );
 
-
-    res.status(200).json({ success: true,  cartItems: cartItems.filter(Boolean) });
+    res
+      .status(200)
+      .json({ success: true, cartItems: cartItems.filter(Boolean) });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(400).json({ success: false, message: error.message });
   }
 };
 
-export { addToCart, updateCart, getUserCart };
+export { addToCart, updateCart, getUserCart, removeFromCart };
