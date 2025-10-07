@@ -1,15 +1,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { removeFromCart, updateQuantity } from "../Store/cartSlice";
+import { removeFromCart, setCartItems, updateQuantity } from "../Store/cartSlice";
 import { toast } from "react-toastify";
 import Title from "../Components/Title";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaRegSadCry } from "react-icons/fa";
 import CartTotal from "../Components/CartTotal";
+import { backendUrl } from "../Store/urlSlice";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Cart = () => {
-  const cartItems = useSelector((store) => store.cart.cartItems);
+  const cartItems = useSelector((store) => store.cart.cartItems || []);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,9 +22,32 @@ const Cart = () => {
     dispatch(removeFromCart({ id }));
   };
 
-  const handleQuantity = (id, quantity) => {
+  const handleQuantity = async(id, quantity) => {
     dispatch(updateQuantity({ id, quantity }));
+
+    const token = localStorage.getItem("token");
+
+    if(token){
+      try {
+        await axios.post(backendUrl + "/api/cart/update",{itemId:id,quantity},{headers: {token : token}});
+      } catch (error) {
+        console.log(error.message);
+        toast.error(error.message)
+      }
+    }
   };
+
+    const getUserCartData = async(token) => {
+    try {
+      const response = await axios.post(backendUrl + "/api/cart/get",{},{headers:{token:token}});
+      console.log(response);
+      dispatch(setCartItems(response.data.cartItems))
+      
+    } catch (error) {
+        console.log(error.message);
+        toast.error(error.message)
+    }
+  }
 
   const handleProceedToPay = () => {
     if (cartItems.length === 0) {
@@ -30,6 +56,14 @@ const Cart = () => {
     }
     navigate("/placeorder");
   };
+
+  useEffect(()=>{
+    const token = localStorage.getItem("token");
+    if(token){
+      getUserCartData(token);
+    }
+  },[])
+
   return (
     <div className="border-t pt-14">
       <div className="text-2xl mb-3">

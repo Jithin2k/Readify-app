@@ -19,7 +19,7 @@ import { setBooks } from "./Store/bookSlice";
 const App = () => {
   const [bookData, setBookData] = useState([]);
   const dispatch = useDispatch();
-  // const token = "eyJhbGciOiJIUzI1NiJ9.YWRtaW5AcmVhZGlmeS5jb21yZWFkaWZ5QDJr.0C666gcG5k9pXHrHwkZ8eDgoVIfMItjw5UemCC_3q5s"
+
 
   const getBooksData = async () => {
     try {
