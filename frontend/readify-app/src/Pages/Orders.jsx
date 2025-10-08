@@ -45,14 +45,16 @@ const Orders = () => {
       <div>
         {orders.map((order, index) => (
           <div key={index} className="py-6 border-t border-b text-gray-700">
-            <div className="mb-4">
+            <div className="mb-4 flex flex-col gap-2">
               <p className="text-sm text-gray-500">
-                Order ID: {order._id} | Status: {order.status} | Total: $
+                Order ID: {order._id} |
+                 Status: {order.status} 
+              </p>
+                <p className="text-sm text-gray-900">
+                 Total: $
                 {order.amount}
               </p>
-              <p className="text-xs text-gray-400">
-                Date: {new Date(order.date).toLocaleString()}
-              </p>
+             
             </div>
 
             {order.items?.map((product, i) => (
@@ -68,10 +70,15 @@ const Orders = () => {
                   />
                   <div>
                     <p className="sm:text-base font-medium">{product.name}</p>
-                    <div className="flex items-center gap-3 text-base text-gray-700">
+               
+                    <div className="flex items-center gap-3 text-base text-gray-700 mt-2">
                       <p className="text-lg">${product.price}</p>
                       <p>Quantity : {product.quantity}</p>
+                   
                     </div>
+                            <p className="text-xs text-gray-400 mt-2">
+                Date: {new Date(order.date).toLocaleString()}
+              </p>
                   </div>
                 </div>
 
