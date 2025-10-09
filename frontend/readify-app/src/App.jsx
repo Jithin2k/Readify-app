@@ -15,25 +15,25 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { backendUrl } from "./Store/urlSlice";
 import { setBooks } from "./Store/bookSlice";
+import Verify from "./Components/Verify";
 
 const App = () => {
   const [bookData, setBookData] = useState([]);
   const dispatch = useDispatch();
 
-
   const getBooksData = async () => {
     try {
       const response = await axios.get(backendUrl + "/api/product/list");
-  
-      dispatch(setBooks(response.data.products))
+
+      dispatch(setBooks(response.data.products));
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
   };
 
-  useEffect(()=>{
-    getBooksData()
-  },[])
+  useEffect(() => {
+    getBooksData();
+  }, []);
 
   return (
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] ">
@@ -48,6 +48,7 @@ const App = () => {
         <Route path="/orders" element={<Orders />} />
         <Route path="/login" element={<Login />} />
         <Route path="/placeorder" element={<PlaceOrder />} />
+        <Route path="/verify" element={<Verify />} />
       </Routes>
 
       <Footer />

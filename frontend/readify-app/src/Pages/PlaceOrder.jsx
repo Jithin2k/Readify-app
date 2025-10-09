@@ -59,46 +59,59 @@ const PlaceOrder = () => {
   //   navigate("/orders");
   // };
 
-
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-     const orderItems = cartItems.map((item)=> ({
-         bookId: item.id,      
-      name: item.name,
-      image: item.image,
-      price: item.price,
-      quantity: item.quantity,
-     }));
-       let orderData = {
-        address : formData,
-        items : orderItems,
-        amount : total + 5,
-        
-       }
+      const orderItems = cartItems.map((item) => ({
+        bookId: item.id,
+        name: item.name,
+        image: item.image,
+        price: item.price,
+        quantity: item.quantity,
+      }));
+      let orderData = {
+        address: formData,
+        items: orderItems,
+        amount: total + 5,
+      };
 
-       switch(paymentMethod){
-        case "cod" : 
-        const response = await axios.post(backendUrl + "/api/order/place",orderData,{headers : {token : token}});
-      
-        
-        if(response.data.success){
-         
-          dispatch(clearCart());
-          navigate("/orders")
-        } else {
-          toast.error(response.data.message)
-        }
-        break;
-        default :
-        break
-       }
+      switch (paymentMethod) {
+        case "cod":
+          const response = await axios.post(
+            backendUrl + "/api/order/place",
+            orderData,
+            { headers: { token: token } }
+          );
+
+          if (response.data.success) {
+            dispatch(clearCart());
+            navigate("/orders");
+          } else {
+            toast.error(response.data.message);
+          }
+          break;
+        case "stripe":
+          const responseStripe = await axios.post(
+            backendUrl + "/api/order/stripe",
+            orderData,
+            { headers: { token: token } }
+          );
+          console.log(responseStripe);
+          
+          if (responseStripe.data.success) {
+            const { session_url } = responseStripe.data;
+            window.location.replace(session_url);
+          } else {
+            toast.error(responseStripe.data.message);
+          }
+          break;
+        default:
+          break;
+      }
     } catch (error) {
       console.log(error.message);
-      toast.error(error.message)
+      toast.error(error.message);
     }
-  
-    
   };
   return (
     <form

@@ -76,6 +76,7 @@ const Orders = () => {
                       <p>Quantity : {product.quantity}</p>
                    
                     </div>
+                    <p className="my-2">Payment Method: <span className="font-semibold">{order.paymentMethod}</span></p>
                             <p className="text-xs text-gray-400 mt-2">
                 Date: {new Date(order.date).toLocaleString()}
               </p>

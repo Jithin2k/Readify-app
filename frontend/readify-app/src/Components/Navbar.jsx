@@ -17,7 +17,7 @@ const Navbar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const token = useSelector((store) => store.userToken.token);
+  const token = localStorage.getItem("token")
 
 
   const logout = () => {
