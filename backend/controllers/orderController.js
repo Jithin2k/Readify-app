@@ -36,7 +36,15 @@ const placeOrderRazor = async (req, res) => {};
 
 // ALL Orders for admin panel
 
-const allOrders = async (req, res) => {};
+const allOrders = async (req, res) => {
+  try {
+    const orders = await orderModel.find({});
+    res.status(200).json({success:true,orders})
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({success:false,message:error.message})
+  }
+};
 
 // User Orders
 const userOrders = async (req, res) => {
