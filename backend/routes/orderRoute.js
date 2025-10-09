@@ -6,7 +6,7 @@ const orderRouter = express.Router();
 
 // AdminRoutes
 orderRouter.post("/list",adminAuth,allOrders);
-orderRouter.post("/staus",adminAuth,updateStatus);
+orderRouter.post("/status",adminAuth,updateStatus);
 
 // Payment Routes
 orderRouter.post("/place",authUser,placeOrder);

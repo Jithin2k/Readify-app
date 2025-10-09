@@ -22,7 +22,9 @@ const placeOrder = async (req, res) => {
 
     await userModel.findByIdAndUpdate(userId, { cartData: {} });
 
-    res.status(200).json({ success: true, message: "Order Placed",order: newOrder });
+    res
+      .status(200)
+      .json({ success: true, message: "Order Placed", order: newOrder });
   } catch (error) {
     res.status(400).json({ success: false, message: error.message });
   }
@@ -39,27 +41,36 @@ const placeOrderRazor = async (req, res) => {};
 const allOrders = async (req, res) => {
   try {
     const orders = await orderModel.find({});
-    res.status(200).json({success:true,orders})
+    res.status(200).json({ success: true, orders });
   } catch (error) {
     console.log(error);
-    res.status(400).json({success:false,message:error.message})
+    res.status(400).json({ success: false, message: error.message });
   }
 };
 
 // User Orders
 const userOrders = async (req, res) => {
   try {
-      const userId = req.userId;
+    const userId = req.userId;
 
-      const orders = await orderModel.find({userId});
+    const orders = await orderModel.find({ userId });
 
-      res.status(200).json({success : true,orders})
+    res.status(200).json({ success: true, orders });
   } catch (error) {
-    res.status(400).json({success : false,message : error.message})
+    res.status(400).json({ success: false, message: error.message });
   }
 };
 
-const updateStatus = async (req, res) => {};
+const updateStatus = async (req, res) => {
+  try {
+    const { orderId, status } = req.body;
+
+    await orderModel.findByIdAndUpdate(orderId, { status },{new:true});
+    res.status(200).json({ success: true, message: "Status Updated" });
+  } catch (error) {
+    res.status(400).json({ success: false, message: "Status Updated" });
+  }
+};
 
 export {
   placeOrder,

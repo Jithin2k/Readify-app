@@ -8,7 +8,6 @@ import { assets } from "../assets/assets";
 
 const Orders = ({ token }) => {
   const [orders, setOrders] = useState([]);
-  console.log(orders);
 
   const fetchAllOrders = async () => {
     if (!token) {
@@ -20,7 +19,7 @@ const Orders = ({ token }) => {
         {},
         { headers: { token: token } }
       );
-      console.log(response);
+     
 
       if (response.data.success) {
         setOrders(response.data.orders);
@@ -31,6 +30,20 @@ const Orders = ({ token }) => {
       toast.error(error.message);
     }
   };
+
+  const statusHandler = async(event,orderId)  =>{
+try {
+  const response = await axios.post(backendUrl + "/api/order/status",{orderId:orderId,status : event.target.value},{headers :{token:token}});
+  console.log(response);
+  
+  if(response.data.success){
+    await fetchAllOrders();
+  }
+} catch (error) {
+  console.log(error);
+  toast.error(error.message)
+}
+  }
 
   useEffect(() => {
     fetchAllOrders();
@@ -83,7 +96,7 @@ const Orders = ({ token }) => {
               <p>Date : {new Date(order.date).toDateString()}</p>
             </div>
             <p className="text-sm sm:text-[15px]">$ {order.amount}</p>
-            <select value={order.status} className="p-2 font-semibold">
+            <select  onChange={(event)=>statusHandler(event,order._id)} value={order.status} className="p-2 font-semibold">
               <option value="Order Placed">Order Placed</option>
               <option value="Packing">Packing</option>
               <option value="Shipped">Shipped</option>
