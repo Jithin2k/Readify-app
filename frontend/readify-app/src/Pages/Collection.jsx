@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import BookCard from "../Components/BookCard"
 import useBookFilter from "../Hooks/useBookFilter.js";
 import useSort from "../Hooks/useSort.js"
-import SearchBar from "../Components/searchBar.jsx";
+import SearchBar from "../Components/SearchBar.jsx";
 import { Link } from "react-router-dom";
 
 const Collection = () => {
